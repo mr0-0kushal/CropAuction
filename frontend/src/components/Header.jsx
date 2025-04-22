@@ -82,6 +82,12 @@ const Header = () => {
         >
           About
         </Link>
+        <Link
+          to="/KisaanAI"
+          className="text-[#ffffff] font-Roboto text-lg mx-3 hover:text-[#3B82F6] transition-all"
+        >
+          Kisaan AI
+        </Link>
       </div>
       <div className="flex items-center cursor-pointer z-[1]">
         {user ? (

@@ -66,7 +66,7 @@ const CheckoutForm = () => {
       if (user?.paymentVerified){
         axios
           .post(
-            "http://localhost:8000/api/v1/payments/update-payment-method",
+            "http://localhost:5000/api/v1/payments/update-payment-method",
             { paymentMethodId: paymentMethod.id },
             { withCredentials: true }
           )
@@ -91,7 +91,7 @@ const CheckoutForm = () => {
         } else {
         axios
           .post(
-            "http://localhost:8000/api/v1/payments/add-payment-method",
+            "http://localhost:5000/api/v1/payments/add-payment-method",
             {
               paymentMethodId: paymentMethod.id,
             },

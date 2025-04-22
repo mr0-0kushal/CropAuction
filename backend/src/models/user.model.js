@@ -3,13 +3,15 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 const userSchema = new mongoose.Schema({
-  fullName: { type: String, required: true, unique: true , trim : true},
+  fullName: { type: String, required: true, trim : true},
   password: { type: String, required: true,trim : true},
   email: { type: String, required: true, unique: true , trim : true},
   location: { type: String },
   userType: {
     type: String,
-    default: "user",
+    enum: ["buyer", "seller", "admin"],
+    default: "buyer",
+    required: true
   },
   resetToken: { type: String },
   resetTokenExpire: { type: Date },

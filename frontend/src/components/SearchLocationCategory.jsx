@@ -71,36 +71,28 @@ const SearchLocationCategory = () => {
   //console.log(city);
 
   return (
-    <div className="flex justify-center items-center my-5 min-h-[100px]">
-      <div className="flex-col   sm:flex-row sm:items-center   bg-[#061224] text-[#7386a8] rounded-md p-2">
+    <div className="flex justify-center items-center my-5 min-h-[100px] w-full px-4">
+      <div className="flex-col sm:flex-row sm:items-center bg-[#E3F2FD] rounded-xl p-4 w-full max-w-7xl mx-auto gap-4">
         <select
           required
-          id="category"
-          className="bg-[#061224] px-2 text-[#7386a8] w-full block sm:w-auto sm:inline  py-3  rounded-lg outline-none border border-border-info-color cursor-pointer"
+          id="location"
+          className="bg-white px-4 text-[#1565C0] w-full sm:w-[25%] block sm:inline py-3 rounded-xl outline-none border border-[#2196F3] focus:border-[#1565C0] cursor-pointer transition-all hover:shadow-md"
           onChange={(e) => setFilter({ ...filter, location: e.target.value })}
         >
           <option value="">Select Location</option>
-          {
-                city && <option value={city} >
-                Current Location
-                </option>
-              }
+          {city && <option value={city}>Current Location</option>}
           {cities.data &&
             cities.data.map((category) => (
-              <>
-             
-               <option key={category._id} value={category._id}>
+              <option key={category._id} value={category._id}>
                 {category.name}
               </option>
-              </>
-             
             ))}
         </select>
 
         <select
           required
           id="category"
-          className="bg-[#061224] px-2 text-[#7386a8] w-full mt-2 sm:w-auto   sm:ml-4 block sm:inline   py-3  rounded-lg outline-none border border-border-info-color cursor-pointer"
+          className="bg-white px-4 text-[#1565C0] w-full sm:w-[25%] mt-2 sm:mt-0 block sm:inline py-3 rounded-xl outline-none border border-[#2196F3] focus:border-[#1565C0] cursor-pointer transition-all hover:shadow-md"
           onChange={(e) => setFilter({ ...filter, category: e.target.value })}
         >
           <option value="">Select Category</option>
@@ -114,14 +106,17 @@ const SearchLocationCategory = () => {
         <input
           type="text"
           placeholder="Search Name"
-          className="bg-[#061224] py-3 px-3 text-[#7386a8] mt-2 block sm:w-auto sm:inline rounded-lg  border border-border-info-color sm:mx-4 outline-none placeholder:text-[#7386a8]"
+          className="bg-white py-3 px-4 text-[#1565C0] w-full sm:w-[30%] mt-2 sm:mt-0 block sm:inline rounded-xl border border-[#2196F3] focus:border-[#1565C0] outline-none placeholder:text-[#90CAF9] transition-all hover:shadow-md"
           value={filter.itemName}
           onChange={(e) => setFilter({ ...filter, itemName: e.target.value })}
         />
         <button
-          className="bg-theme-color mt-2  hover:bg-color-danger text-white text-sm font-bold  rounded-md my-auto px-3 py-2  text-center no-underline border-none"
+          className="bg-[#2196F3] w-full sm:w-[20%] mt-2 sm:mt-0 hover:bg-[#1565C0] text-white font-medium rounded-xl px-6 py-3 text-center no-underline border-none transition-all duration-300 hover:shadow-lg flex items-center justify-center gap-2"
           onClick={() => SearchByFilter()}
         >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
           Search
         </button>
       </div>

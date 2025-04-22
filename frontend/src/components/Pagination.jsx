@@ -1,4 +1,3 @@
-
 import { FaCaretRight, FaCaretLeft } from "react-icons/fa";
 
 const Pagination = (props) => {
@@ -7,26 +6,26 @@ const Pagination = (props) => {
     pages.push(i);
   }
   return (
-    <div className="flex justify-center items-center border-t border-border-info-color pt-4  my-10 md:button:px-3 md:button:py-2 button:px-2 button:py-1 button:rounded-lg ">
+    <div className="flex justify-center items-center border-t border-[#E8F5E9] pt-4 my-10">
       {props.currentPage > 1 && (
         <button
           onClick={() => props.prevPage()}
-          className="bg-[#00A3FF] hover:bg-color-danger text-white transition-all"
+          className="bg-[#4CAF50] hover:bg-[#2E7D32] text-white p-2 rounded-xl transition-all duration-300 flex items-center justify-center"
         >
-          <FaCaretLeft size={18} />
+          <FaCaretLeft size={20} />
         </button>
       )}
 
-      <span>
-        <span className="ml-3">Page {props.currentPage}</span>
-        <span className="mr-3"> of {pages.length}</span>
+      <span className="mx-4 text-[#1B3D1B] font-medium">
+        Page {props.currentPage} of {pages.length}
       </span>
+
       {props.currentPage < pages.length && (
         <button
           onClick={() => props.nextPage()}
-          className="bg-[#00A3FF] hover:bg-color-danger text-white transition-all"
+          className="bg-[#4CAF50] hover:bg-[#2E7D32] text-white p-2 rounded-xl transition-all duration-300 flex items-center justify-center"
         >
-          <FaCaretRight size={18} />
+          <FaCaretRight size={20} />
         </button>
       )}
     </div>

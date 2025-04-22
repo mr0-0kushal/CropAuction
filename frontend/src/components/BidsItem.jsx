@@ -87,10 +87,10 @@ const BidsItem = () => {
                   </span>
                 </td>
                 <td>
-                  <span>${bid?.auction?.startingPrice}</span>
+                  <span>₹{bid?.auction?.startingPrice}</span>
                 </td>
                 <td>
-                  <span>${bid?.bidAmount}</span>
+                  <span>₹{bid?.bidAmount}</span>
                 </td>
                 
                 <td className="capitalize rounded-r-lg flex justify-center items-center">

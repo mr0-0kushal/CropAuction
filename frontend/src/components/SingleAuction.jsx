@@ -82,7 +82,7 @@ const SingleAuction = ({
             <div className="flex flex-col">
               <p className="text-sm text-[#4CAF50]">Current Bid</p>
               <p className="mt-1 text-lg font-semibold text-[#1B3D1B] flex items-center">
-                <BsCurrencyDollar size={18} className="mr-1" />
+              ₹
                 {startingPrice}
               </p>
             </div>

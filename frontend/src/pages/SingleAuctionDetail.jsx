@@ -271,7 +271,7 @@ const SingleAuctionDetail = ({ noPadding }) => {
                   {singleAuction?.bids?.length > 0 ? "Current Bid" : "Starting Price"}
                 </h3>
                 <p className="text-[#4CAF50] font-bold text-xl">
-                  ${singleAuctionData?.startingPrice}
+                ₹{singleAuctionData?.startingPrice}
                 </p>
               </div>
               <div className="flex flex-col gap-2">
@@ -323,7 +323,7 @@ const SingleAuctionDetail = ({ noPadding }) => {
                         </div>
                       </div>
                       <div className="text-[#4CAF50] font-bold">
-                        ${auctionWinnerDetailData?.bidAmount ||
+                      ₹{auctionWinnerDetailData?.bidAmount ||
                           singleAuction?.winner?.bidAmount}
                       </div>
                     </div>

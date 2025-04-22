@@ -16,16 +16,23 @@ const stripe= new Stripe(process.env.STRIPE_KEY);
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
   
-  const { fullName, email, password } = req.body;
+  const { fullName, email, password, userType } = req.body;
   if (fullName == "") {
     return res.status(400).json(new ApiResponse(400, "Full name is required"));
   }
 
-  if ([fullName, email, password].some((fields) => fields?.trim() === "")) {
+  if ([fullName, email, password, userType].some((fields) => fields?.trim() === "")) {
     return res
       .status(400)
       .json(new ApiResponse(400, "All fields are required"));
   }
+
+  if (!["buyer", "seller"].includes(userType)) {
+    return res
+      .status(400)
+      .json(new ApiResponse(400, "Invalid user type. Must be either 'buyer' or 'seller'"));
+  }
+
   const existedUser = await User.findOne({
     $or: [{ fullName }, { email }],
   });
@@ -37,17 +44,17 @@ const registerUser = asyncHandler(async (req, res) => {
   const customer=await stripe.customers.create({
     email:email,
     name:fullName
-});
+  });
 
-
-if(!customer){
-  return res.status(500).json(new ApiResponse(500, "Error creating user. Please try again"));
-}
+  if(!customer){
+    return res.status(500).json(new ApiResponse(500, "Error creating user. Please try again"));
+  }
 
   const user = await User.create({
     fullName: fullName.toLowerCase(),
     email,
     password,
+    userType
   });
 
   const createdUser = await User.findById(user._id).select("-password");

@@ -12,6 +12,7 @@ const Register = () => {
     fullName: "",
     email: "",
     password: "",
+    userType: "buyer", // Default to buyer
   });
 
   const navigate = useNavigate();
@@ -136,6 +137,31 @@ const Register = () => {
                 <FaRegEyeSlash size={18} className=" text-gray-400 " />
               )}
             </button> */}
+          </div>
+          <label className="my-1 text-lg">Account Type</label>
+          <div className="flex gap-4 mb-4">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="radio"
+                name="userType"
+                value="buyer"
+                checked={formData.userType === "buyer"}
+                onChange={(e) => setFormData({ ...formData, userType: e.target.value })}
+                className="w-4 h-4 text-theme-color focus:ring-theme-color"
+              />
+              <span>Buyer</span>
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="radio"
+                name="userType"
+                value="seller"
+                checked={formData.userType === "seller"}
+                onChange={(e) => setFormData({ ...formData, userType: e.target.value })}
+                className="w-4 h-4 text-theme-color focus:ring-theme-color"
+              />
+              <span>Seller</span>
+            </label>
           </div>
           <button
             type="submit"

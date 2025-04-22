@@ -5,9 +5,36 @@ export default function KisaanAI() {
   const [question, setQuestion] = useState('');
   const [reply, setReply] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false);
 
-  const askBlack = async () => {
-    if (!question.trim()) return;
+  const recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let recognitionInstance;
+
+  if (recognition) {
+    recognitionInstance = new recognition();
+    recognitionInstance.lang = 'hi-IN'; // Hindi
+    recognitionInstance.interimResults = false;
+    recognitionInstance.continuous = false;
+
+    recognitionInstance.onresult = (event) => {
+      const spokenText = event.results[0][0].transcript;
+      setQuestion(spokenText);
+      askBlack(spokenText);
+      setIsListening(false);
+    };
+
+    recognitionInstance.onerror = (event) => {
+      console.error("Speech Recognition Error:", event.error);
+      setIsListening(false);
+    };
+
+    recognitionInstance.onend = () => {
+      setIsListening(false);
+    };
+  }
+
+  const askBlack = async (query = question) => {
+    if (!query.trim()) return;
     setLoading(true);
     setReply('');
 
@@ -17,7 +44,7 @@ export default function KisaanAI() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ question })
+        body: JSON.stringify({ question: query })
       });
 
       const data = await res.json();
@@ -28,6 +55,17 @@ export default function KisaanAI() {
     }
 
     setLoading(false);
+  };
+
+  const toggleVoiceInput = () => {
+    if (!recognitionInstance) return alert('Your browser does not support speech recognition.');
+
+    if (!isListening) {
+      setIsListening(true);
+      recognitionInstance.start();
+    } else {
+      recognitionInstance.stop();
+    }
   };
 
   return (
@@ -45,18 +83,30 @@ export default function KisaanAI() {
         <textarea
           className="w-full p-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-green-400"
           rows="3"
-          placeholder="Ask about a crop, e.g. 'What is the price of wheat?'"
+          placeholder="Ask about a crop, e.g. 'गेहूं का दाम क्या है?'"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
         />
 
+        <div className="flex gap-2 mb-4">
         <button
-          onClick={askBlack}
-          disabled={loading}
-          className="w-full bg-green-600 text-white py-2 font-semibold rounded-lg hover:bg-green-700 transition disabled:opacity-50"
-        >
-          {loading ? '⏳ Fetching...' : '🚜 Ask'}
-        </button>
+  onClick={() => askBlack()} // explicitly call it without event
+  disabled={loading}
+  className="flex-1 bg-green-600 text-white py-2 font-semibold rounded-lg hover:bg-green-700 transition disabled:opacity-50"
+>
+  {loading ? '⏳ Fetching...' : '🚜 Ask'}
+</button>
+
+
+          <button
+            onClick={toggleVoiceInput}
+            className={`flex items-center gap-2 px-4 py-2 border rounded-lg ${
+              isListening ? 'bg-red-100 border-red-400 text-red-600' : 'bg-blue-100 border-blue-400 text-blue-600'
+            }`}
+          >
+            🎙️ {isListening ? 'Listening...' : 'Speak'}
+          </button>
+        </div>
 
         {reply && (
           <motion.div
@@ -67,31 +117,25 @@ export default function KisaanAI() {
           >
             <h2 className="font-semibold text-lg text-green-700 mb-2">🧠 Black's Reply:</h2>
             <div className="bg-gray-100 p-4 rounded-lg text-gray-800 space-y-2 leading-relaxed">
-  {reply.split('\n').map((line, index) => {
-    const trimmed = line.trim();
-
-    // Detect full section headers like "Punjab:" or "NCT of Delhi..."
-    const isHeader = /^[A-Z].+:$/.test(trimmed);
-
-    // Detect important notes or bold markdown
-    const boldPattern = /\*\*(.*?)\*\*/g;
-    const formattedLine = trimmed.replace(boldPattern, (_, boldText) => `<strong>${boldText}</strong>`);
-
-    return (
-      <div key={index}>
-        {isHeader ? (
-          <p className="font-bold text-green-700">{trimmed}</p>
-        ) : (
-          <p
-            className={`pl-4 ${trimmed.startsWith('•') ? '' : 'text-sm text-gray-700'}`}
-            dangerouslySetInnerHTML={{ __html: formattedLine }}
-          />
-        )}
-      </div>
-    );
-  })}
-</div>
-
+              {reply.split('\n').map((line, index) => {
+                const trimmed = line.trim();
+                const isHeader = /^[A-Z].+:$/.test(trimmed);
+                const boldPattern = /\*\*(.*?)\*\*/g;
+                const formattedLine = trimmed.replace(boldPattern, (_, boldText) => `<strong>${boldText}</strong>`);
+                return (
+                  <div key={index}>
+                    {isHeader ? (
+                      <p className="font-bold text-green-700">{trimmed}</p>
+                    ) : (
+                      <p
+                        className={`pl-4 ${trimmed.startsWith('•') ? '' : 'text-sm text-gray-700'}`}
+                        dangerouslySetInnerHTML={{ __html: formattedLine }}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </motion.div>
         )}
       </motion.div>

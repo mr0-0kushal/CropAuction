@@ -62,10 +62,32 @@ async function askGemini(prompt) {
     }
 }
 
+// Map of crop names in both English and Hindi
+const cropTranslations = {
+    potato: ['potato', 'आलू'],
+    wheat: ['wheat', 'गेहूं'],
+    rice: ['rice', 'चावल'],
+    onion: ['onion', 'प्याज'],
+    tomato: ['tomato', 'टमाटर'],
+    corn: ['corn', 'मक्का']
+};
+
 function extractCropsFromQuestion(question) {
     const lower = question.toLowerCase();
-    return availableCrops.filter(crop => lower.includes(crop));
+    const matchedCrops = [];
+
+    for (const [engCrop, aliases] of Object.entries(cropTranslations)) {
+        for (const alias of aliases) {
+            if (lower.includes(alias.toLowerCase())) {
+                matchedCrops.push(engCrop);
+                break; // Break inner loop if one alias matches
+            }
+        }
+    }
+
+    return matchedCrops;
 }
+
 
 router.post("/ask", async (req, res) => {
     const { question } = req.body;
@@ -84,8 +106,9 @@ You are an AI assistant named Black helping Indian farmers.
 
 Here is the latest crop price info:\n${cropData}
 
-Now answer this farmer's question in a helpful tone:\n"${question}"
-    `;
+Now answer this farmer's question in a helpful tone and if you question in Devnagri script proceed vice versa:\n"${question}"
+`;
+
 
     const reply = await askGemini(fullPrompt);
     console.log("repy")

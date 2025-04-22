@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getCartItems, reset } from "../store/cart/cartSlice";
+import { getCartItems } from "../store/cart/cartSlice";
 import axios from "axios";
 import { useStripe } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { FaShoppingCart } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 const Cart = () => {
   const [cartItem, setCartItem] = useState();
@@ -69,35 +75,55 @@ const Cart = () => {
   };
 
   return (
-    <div className="px-7 py-4 w-full bg-[#E8F5E9] text-[#1B3D1B] rounded-2xl">
+    <motion.div
+      className="px-7 py-4 w-full bg-[#E8F5E9] text-[#1B3D1B] rounded-2xl"
+      initial="hidden"
+      animate="visible"
+      variants={fadeInUp}
+      transition={{ delay: 0.3 }}
+    >
       <div className="flex items-center gap-3 mb-6">
         <FaShoppingCart className="text-[#4CAF50] text-2xl" />
         <h2 className="text-[#1B3D1B] font-bold text-xl border-b border-[#4CAF50] pb-3">
           Your Cart
         </h2>
       </div>
-      
+
       {cartItem?.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-12">
+        <motion.div
+          className="flex flex-col items-center justify-center py-12"
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+          transition={{ delay: 0.4 }}
+        >
           <FaShoppingCart className="text-[#4CAF50] text-6xl mb-4" />
           <p className="text-[#1B3D1B] text-lg">Your cart is empty</p>
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="mt-4 px-6 py-2 bg-[#4CAF50] text-white rounded-lg hover:bg-[#2E7D32] transition-all"
           >
             Continue Shopping
           </Link>
-        </div>
+        </motion.div>
       ) : (
         cartItem?.map((item) => (
-          <div
+          <motion.div
             key={item._id}
             className="flex flex-col gap-4 border-2 border-[#4CAF50] rounded-xl p-6 mb-6 bg-white shadow-lg"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+            transition={{ delay: 0.4 }}
           >
             {item.products.map((product) => (
-              <div
+              <motion.div
                 key={product._id}
                 className="flex flex-col justify-between gap-6 p-4 md:flex-row items-start md:items-center border-b border-[#4CAF50] last:border-0"
+                initial="hidden"
+                animate="visible"
+                variants={fadeInUp}
+                transition={{ delay: 0.5 }}
               >
                 <div className="flex gap-4 items-center">
                   <img
@@ -124,12 +150,12 @@ const Cart = () => {
                     Checkout
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         ))
       )}
-    </div>
+    </motion.div>
   );
 };
 

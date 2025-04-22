@@ -9,7 +9,7 @@ const ChangePassword = () => {
     oldPassword: "",
     newPassword: "",
   });
-const {isLoading,isSuccess , isError,message}=useSelector((state)=>state.auth)
+  const {isLoading,isSuccess , isError,message}=useSelector((state)=>state.auth)
   const dispatch = useDispatch();
 
   const handleChangeCurrentPassword = (e) => {
@@ -38,22 +38,20 @@ const {isLoading,isSuccess , isError,message}=useSelector((state)=>state.auth)
         })
       }
       if(isError){
-
         toast.error(message,{
           autoClose:500
         })
       }
-    
     })
   };
 
   return (
-    <div className="flex flex-col w-full px-7 py-4 bg-theme-bg text-body-text-color rounded-2xl ">
-      <h2 className=" text-white font-bold text-xl border-b border-border-info-color pb-3 mb-5 ">
+    <div className="flex flex-col w-full px-7 py-4 bg-[#E8F5E9] text-[#1B3D1B] rounded-2xl">
+      <h2 className="text-[#1B3D1B] font-bold text-xl border-b border-[#4CAF50] pb-3 mb-5">
         Change Password
       </h2>
       <form
-        className="flex flex-col gap-5 lg:w-[50%] inputs:outline-none inputs:px-3 inputs:py-4 inputs:rounded-xl inputs:bg-theme-bg2 inputs:border inputs:border-border-info-color focus:inputs:border-theme-color "
+        className="flex flex-col gap-5 lg:w-[50%] inputs:outline-none inputs:px-3 inputs:py-4 inputs:rounded-xl inputs:bg-white inputs:border inputs:border-[#4CAF50] focus:inputs:border-[#2E7D32]"
         onSubmit={handleChangeCurrentPassword}
       >
         <div className="flex flex-col">
@@ -61,7 +59,7 @@ const {isLoading,isSuccess , isError,message}=useSelector((state)=>state.auth)
           <input
             type="password"
             placeholder="Enter old Password"
-            className="text-white placeholder-body-text-color"
+            className="text-[#1B3D1B] placeholder-[#4CAF50] bg-white border border-[#4CAF50] rounded-xl px-3 py-2"
             name="oldPassword"
             value={formData.oldPassword}
             onChange={(e) =>
@@ -73,7 +71,7 @@ const {isLoading,isSuccess , isError,message}=useSelector((state)=>state.auth)
           <input
             type="password"
             placeholder="Enter new Password"
-            className="text-white placeholder-body-text-color"
+            className="text-[#1B3D1B] placeholder-[#4CAF50] bg-white border border-[#4CAF50] rounded-xl px-3 py-2"
             name="newPassword"
             value={formData.newPassword}
             onChange={(e) =>
@@ -85,9 +83,9 @@ const {isLoading,isSuccess , isError,message}=useSelector((state)=>state.auth)
 
         <button
           type="submit"
-          className="rounded-xl px-4 py-3 text-white cursor-pointer font-bold tracking-wide w-fit bg-color-danger hover:bg-theme-color transition-all"
+          className="rounded-xl px-4 py-3 text-white cursor-pointer font-bold tracking-wide w-fit bg-[#4CAF50] hover:bg-[#2E7D32] transition-all"
         >
-          Change Password
+          {isLoading ? "Changing..." : "Change Password"}
         </button>
       </form>
     </div>

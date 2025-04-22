@@ -76,37 +76,34 @@ const Register = () => {
   // };
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-[#061224] text-[#7386a8]">
-      <div className="flex w-[90%]  flex-col items-center justify-center rounded-xl bg-[#071B36] py-8 sm:w-2/5 sm:px-6">
-        <h1 className="text-3xl font-bold text-white">
-          <span className="uppercase text-[#00A3FF]">B</span>id
-          <span className="uppercase text-[#00A3FF]">F</span>air
+    <div className="flex min-h-screen w-full items-center justify-center bg-white text-[#1B3D1B]">
+      <div className="flex w-[90%] flex-col items-center rounded-xl bg-[#E8F5E9] py-8 sm:w-2/5 sm:px-6">
+        <h1 className="text-3xl font-bold text-[#1B3D1B]">
+          <span className="uppercase text-[#4CAF50]">B</span>id
+          <span className="uppercase text-[#4CAF50]">M</span>y
+          <span className="uppercase text-[#4CAF50]">C</span>rops
         </h1>
-        <p className="m-2 text-xl">Create your new account</p>
-        <p className="my-3 h-[1px] w-[80%] bg-[#747d9340]"></p>
-        <form
-          className="overflow-hidden flex w-[90%] flex-col sm:w-[90%] "
-          onSubmit={handleRegister}
-        >
+
+        <p className="m-2 text-xl">Create your account</p>
+        <p className="my-3 h-[1px] w-[80%] bg-[#4CAF50]"></p>
+        <form className="flex w-[90%] flex-col sm:w-[90%]" onSubmit={handleRegister}>
           <label className="my-1 text-lg">Full Name</label>
           <input
             type="text"
-            placeholder="Your Name"
-            className=" w-full pl-5 py-3 rounded text-white bg-[#0E294D] placeholder-body-text-color outline-none mb-3 border border-border-info-color focus:border-theme-color"
+            placeholder="Your Full Name"
+            className="w-full pl-5 py-3 rounded text-[#1B3D1B] bg-white placeholder-[#1B3D1B] outline-none mb-3 border border-[#4CAF50] focus:border-[#2E7D32]"
             name="fullName"
             value={formData.fullName}
             onChange={(e) =>
               setFormData({ ...formData, fullName: e.target.value })
             }
             required
-            // add validation here
-            minLength={5}
           />
           <label className="my-1 text-lg">Email Address</label>
           <input
             type="email"
             placeholder="Your Email"
-            className=" w-full pl-5 py-3 rounded text-white bg-[#0E294D] placeholder-body-text-color outline-none mb-3 border border-border-info-color focus:border-theme-color"
+            className="w-full pl-5 py-3 rounded text-[#1B3D1B] bg-white placeholder-[#1B3D1B] outline-none mb-3 border border-[#4CAF50] focus:border-[#2E7D32]"
             name="email"
             value={formData.email}
             onChange={(e) =>
@@ -114,12 +111,12 @@ const Register = () => {
             }
             required
           />
-          <label className="my-1 text-lg">Password</label>
-          <div className=" pr-3 overflow-hidden flex justify-between items-center w-full rounded bg-[#0E294D] outline-none mb-4 border border-border-info-color ">
+          <label className="my-1 mt-2 text-lg">Password</label>
+          <div className="pr-3 overflow-hidden flex justify-between items-center w-full rounded bg-white outline-none mb-4 border border-[#4CAF50]">
             <input
               type="password"
               placeholder="Your Password"
-              className=" w-full pl-5 py-3 bg-[#0E294D] text-white placeholder-body-text-color outline-none"
+              className="w-full pl-5 py-3 bg-white text-[#1B3D1B] placeholder-[#1B3D1B] outline-none"
               name="password"
               value={formData.password}
               onChange={(e) =>
@@ -127,16 +124,6 @@ const Register = () => {
               }
               required
             />
-            {/* <button
-              className=" p-2 hover:bg-theme-bg rounded-full h-fit active:scale-90 hover: transition-all"
-              onClick={togglePasswordVisibility}
-            >
-              {showPassword ? (
-                <FaRegEye size={18} />
-              ) : (
-                <FaRegEyeSlash size={18} className=" text-gray-400 " />
-              )}
-            </button> */}
           </div>
           <label className="my-1 text-lg">Account Type</label>
           <div className="flex gap-4 mb-4">
@@ -147,7 +134,7 @@ const Register = () => {
                 value="buyer"
                 checked={formData.userType === "buyer"}
                 onChange={(e) => setFormData({ ...formData, userType: e.target.value })}
-                className="w-4 h-4 text-theme-color focus:ring-theme-color"
+                className="w-4 h-4 text-[#4CAF50] focus:ring-[#4CAF50]"
               />
               <span>Buyer</span>
             </label>
@@ -158,14 +145,14 @@ const Register = () => {
                 value="seller"
                 checked={formData.userType === "seller"}
                 onChange={(e) => setFormData({ ...formData, userType: e.target.value })}
-                className="w-4 h-4 text-theme-color focus:ring-theme-color"
+                className="w-4 h-4 text-[#4CAF50] focus:ring-[#4CAF50]"
               />
               <span>Seller</span>
             </label>
           </div>
           <button
             type="submit"
-            className="my-4 font-Roboto outline-none border-none w-full rounded bg-[#00A3FF] px-4 py-3 font-bold hover:bg-color-danger  text-[#ffffff]"
+            className="my-4 font-Roboto outline-none border-none w-full rounded bg-[#4CAF50] px-4 py-3 font-bold hover:bg-[#2E7D32] text-white"
             disabled={isLoading ? true : false}
           >
             Sign Up
@@ -176,7 +163,7 @@ const Register = () => {
           Already have an account?{" "}
           <Link
             to="/login"
-            className="font-bold text-[#29B6F6] hover:text-color-danger"
+            className="font-bold text-[#4CAF50] hover:text-[#2E7D32]"
           >
             Sign In.
           </Link>

@@ -52,7 +52,7 @@ const Dashboard = () => {
   // 318f69a969db4f7599b7fbb5043e444e
 
   return (
-    <div className="flex flex-col min-h-screen w-full  bg-[#061224] text-[#7386a8]">
+    <div className="flex flex-col min-h-screen w-full bg-[#E8F5E9] text-[#1B3D1B]">
       <div className="">
         <SearchLocationCategory />
       </div>

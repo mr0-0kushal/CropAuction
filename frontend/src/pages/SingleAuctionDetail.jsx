@@ -172,72 +172,65 @@ const SingleAuctionDetail = ({ noPadding }) => {
   return (
     <>
       <div
-        className={`flex place-content-between  py-10 px-5 lg:py-20  lg:px-10  items-start gap-7 flex-wrap md:flex-nowrap ${noPadding ? "lg:py-0 px-0" : "p-4"}`}
+        className={`flex place-content-between py-10 px-5 lg:py-20 lg:px-10 items-start gap-7 flex-wrap md:flex-nowrap ${noPadding ? "lg:py-0 px-0" : "p-4"}`}
         id="item01"
       >
-        <img
-          className=" rounded-xl  md:max-w-[45%]  w-full "
-          src={singleAuction?.image}
-          alt="product image"
-        />
-        <div className="w-full flex gap-4 flex-col ">
+        <div className="md:max-w-[45%] w-full">
+          <img
+            className="rounded-xl w-full h-[400px] object-cover shadow-lg"
+            src={singleAuction?.image}
+            alt="product image"
+          />
+        </div>
+        <div className="w-full flex gap-6 flex-col bg-[#E8F5E9] p-6 rounded-xl shadow-lg">
           <div>
-            <h2 className="text-3xl font-extrabold text-white">
+            <h2 className="text-3xl font-extrabold text-[#1B3D1B]">
               {singleAuction?.name}
             </h2>
 
-            <div className="pt-4 flex flex-row gap-4 flex-wrap text-body-text-color capitalize">
-              <a
-                href="#"
-                className="px-4 py-1 border rounded-full hover:bg-color-primary border-border-info-color hover:text-white transition-all"
-              >
+            <div className="pt-4 flex flex-row gap-4 flex-wrap">
+              <span className="px-4 py-2 rounded-full bg-[#4CAF50] text-white font-medium">
                 {singleAuction?.category?.name}
-              </a>
-              <a
-                href="#"
-                className="px-4 py-1 border rounded-full hover:bg-color-primary border-border-info-color hover:text-white transition-all"
-              >
+              </span>
+              <span className="px-4 py-2 rounded-full bg-[#4CAF50] text-white font-medium">
                 {singleAuction?.location?.name}
-              </a>
+              </span>
             </div>
-
-            {/* border */}
           </div>
 
-          <div className="pt-4 border-t border-border-info-color">
-            {/* Creator */}
+          <div className="pt-4 border-t border-[#4CAF50]">
             <div className="flex gap-8">
-              <div id="author-item" className="text-heading-color">
-                <span className="font-medium capitalize  ">Seller</span>
-                <div id="author-info" className="flex items-center gap-2 pt-2">
+              <div className="text-[#1B3D1B]">
+                <span className="font-medium capitalize">Seller</span>
+                <div className="flex items-center gap-3 pt-2">
                   <img
                     src={singleAuction?.seller?.profilePicture}
                     alt="avatar"
-                    className="w-[45px] rounded-full"
+                    className="w-[50px] h-[50px] rounded-full object-cover border-2 border-[#4CAF50]"
                   />
-                  <a href="#" className="font-medium ">
+                  <span className="font-medium text-[#1B3D1B]">
                     {singleAuction?.seller?.fullName}
-                  </a>
+                  </span>
                 </div>
               </div>
             </div>
-            {/* TABS buttons */}
-            <div className="flex gap-4 pt-4 font-bold text-white ">
+            
+            <div className="flex gap-4 pt-4">
               <button
-                className={`px-5 py-2 rounded-xl   ${
+                className={`px-5 py-2 rounded-xl font-bold transition-all ${
                   activeTab === "description"
-                    ? "bg-color-primary"
-                    : "bg-theme-bg2 text-body-text-color"
+                    ? "bg-[#4CAF50] text-white"
+                    : "bg-white text-[#1B3D1B] border border-[#4CAF50] hover:bg-[#4CAF50] hover:text-white"
                 }`}
                 onClick={() => setActiveTab("description")}
               >
                 Details
               </button>
               <button
-                className={`px-5 py-2 rounded-xl   ${
+                className={`px-5 py-2 rounded-xl font-bold transition-all ${
                   activeTab === "bids"
-                    ? "bg-color-primary"
-                    : "bg-theme-bg2 text-body-text-color"
+                    ? "bg-[#4CAF50] text-white"
+                    : "bg-white text-[#1B3D1B] border border-[#4CAF50] hover:bg-[#4CAF50] hover:text-white"
                 }`}
                 onClick={() => setActiveTab("bids")}
               >
@@ -245,55 +238,45 @@ const SingleAuctionDetail = ({ noPadding }) => {
               </button>
             </div>
           </div>
+
           <div>
-            {/* Description */}
             <div
-              id="description"
-              className={`pt-4 border-t border-border-info-color ${
+              className={`pt-4 border-t border-[#4CAF50] ${
                 activeTab === "description" ? "block" : "hidden"
               }`}
             >
-              <h3 className="text-heading-color font-medium">Description</h3>
-              <p className="text-body-text-color">
+              <h3 className="text-[#1B3D1B] font-medium text-xl mb-2">Description</h3>
+              <p className="text-[#1B3D1B] leading-relaxed">
                 {singleAuction?.description}
               </p>
             </div>
-            {/* Bids */}
+
             <div
-              id="bids"
-              className={`pt-4 border-t border-border-info-color max-h-[250px] overflow-y-auto  ${
+              className={`pt-4 border-t border-[#4CAF50] max-h-[250px] overflow-y-auto ${
                 activeTab === "bids" ? "block" : "hidden"
               } no-scrollbar`}
             >
-              {/* map over bids array */}
               {singleAuction?.bids?.length > 0 || bidsData.length > 0 ? (
                 bidsData?.map((bid) => <BidCard key={bid._id} bid={bid} />)
               ) : (
-                <h1 className="text-white">No bids yet</h1>
+                <h1 className="text-[#1B3D1B] text-center py-4">No bids yet</h1>
               )}
             </div>
           </div>
 
-          <div className="text-heading-color capitalize"></div>
-
-          {/* countdown timer */}
-
-          <div className="flex flex-col gap-4 pt-4 border-t border-border-info-color">
+          <div className="flex flex-col gap-4 pt-4 border-t border-[#4CAF50]">
             <div className="flex justify-between items-center">
               <div className="flex flex-col gap-2">
-                <h3 className="text-heading-color font-medium">
-                  {" "}
-                  {singleAuction?.bids?.length > 0
-                    ? "Current Bid"
-                    : "Starting Price"}
+                <h3 className="text-[#1B3D1B] font-medium text-lg">
+                  {singleAuction?.bids?.length > 0 ? "Current Bid" : "Starting Price"}
                 </h3>
-                <p className="text-body-text-color">
+                <p className="text-[#4CAF50] font-bold text-xl">
                   ${singleAuctionData?.startingPrice}
                 </p>
               </div>
               <div className="flex flex-col gap-2">
-                <h3 className="text-heading-color font-medium">Time </h3>
-                <p className="text-body-text-color">
+                <h3 className="text-[#1B3D1B] font-medium text-lg">Time</h3>
+                <p className="text-[#4CAF50] font-bold">
                   <CountDownTimer
                     startTime={singleAuction?.startTime}
                     endTime={singleAuction?.endTime}
@@ -305,29 +288,28 @@ const SingleAuctionDetail = ({ noPadding }) => {
             </div>
           </div>
 
-          {/* // detail about current bid and timer  */}
-          <div className=" flex flex-col gap-4 pt-4 border-t border-border-info-color ">
+          <div className="flex flex-col gap-4 pt-4 border-t border-[#4CAF50]">
             {singleAuction?.status === "over" || auctionWinnerDetailData ? (
               bidsData.length > 0 ? (
                 <>
                   <div>
-                    <h1 className="font-bold text-white">Winner</h1>
-                    <div className="flex sm:gap-10 items-center border mt-2 justify-between md:w-[80%] py-1 px-2 md:px-5 border-theme-bg-light rounded-full">
-                      <div className="flex gap-4 items-center text-white">
+                    <h1 className="font-bold text-[#1B3D1B] text-xl mb-4">Winner</h1>
+                    <div className="flex sm:gap-10 items-center border mt-2 justify-between md:w-[80%] py-3 px-4 md:px-6 border-[#4CAF50] rounded-xl bg-white">
+                      <div className="flex gap-4 items-center">
                         <img
                           src={
                             auctionWinnerDetailData?.bidder?.profilePicture ||
                             singleAuction?.winner?.bidder?.profilePicture
                           }
                           alt="bidder profilePicture"
-                          className="w-10 h-10 rounded-full"
+                          className="w-12 h-12 rounded-full border-2 border-[#4CAF50]"
                         />
                         <div className="flex flex-col">
-                          <span className="font-semibold">
+                          <span className="font-semibold text-[#1B3D1B]">
                             {auctionWinnerDetailData?.bidder?.fullName ||
                               singleAuction?.winner?.bidder?.fullName}
                           </span>
-                          <span className="text-xs text-body-text-color">
+                          <span className="text-sm text-[#4CAF50]">
                             {new Date(
                               auctionWinnerDetailData?.bidTime ||
                                 singleAuction?.winner?.bidTime
@@ -340,16 +322,15 @@ const SingleAuctionDetail = ({ noPadding }) => {
                           </span>
                         </div>
                       </div>
-                      <div className="text-white">
-                        Bid Amount : $
-                        {auctionWinnerDetailData?.bidAmount ||
+                      <div className="text-[#4CAF50] font-bold">
+                        ${auctionWinnerDetailData?.bidAmount ||
                           singleAuction?.winner?.bidAmount}
                       </div>
-                    </div>{" "}
+                    </div>
                   </div>
                 </>
               ) : (
-                <h1 className="text-white">No bids</h1>
+                <h1 className="text-[#1B3D1B] text-center py-4">No bids</h1>
               )
             ) : (
               auctionStarted && (
@@ -357,10 +338,9 @@ const SingleAuctionDetail = ({ noPadding }) => {
                   className="flex justify-between flex-wrap gap-4 items-center"
                   onSubmit={placeBidHandle}
                 >
-                  {/* input button for bid */}
                   <input
                     type="number"
-                    className="outline-none text-slate-300 px-3 py-4 rounded-xl bg-theme-bg2 border border-border-info-color focus:border-theme-color transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    className="outline-none px-4 py-3 rounded-xl bg-white border-2 border-[#4CAF50] focus:border-[#2E7D32] transition-all text-[#1B3D1B] placeholder-[#4CAF50] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                     placeholder="Enter your bid"
                     value={newBidAmount}
                     onChange={(e) => setNewBidAmount(e.target.value)}
@@ -375,22 +355,22 @@ const SingleAuctionDetail = ({ noPadding }) => {
                             ? true
                             : false || !auctionStarted
                         }
-                        className={`bg-color-primary py-2 px-4 rounded-lg  text-white ${
+                        className={`py-3 px-6 rounded-xl font-bold text-white transition-all ${
                           singleAuction?.seller?._id === logInUser?._id
-                            ? "bg-theme-bg2 text-body-text-color cursor-not-allowed border border-border-info-color hover:border-color-danger"
-                            : "bg-color-primary border cursor-pointer border-border-info-color hover:bg-color-danger"
+                            ? "bg-gray-400 cursor-not-allowed"
+                            : "bg-[#4CAF50] hover:bg-[#2E7D32]"
                         } ${
                           !auctionStarted
-                            ? "bg-theme-bg2 text-body-text-color "
-                            : "bg-color-primary "
-                        } `}
+                            ? "bg-gray-400 cursor-not-allowed"
+                            : "bg-[#4CAF50] hover:bg-[#2E7D32]"
+                        }`}
                       >
                         Place Bid
                       </button>
                     ) : (
                       <Link
                         to="/user-profile/payment-method"
-                        className="bg-color-primary py-2 px-4 rounded-lg cursor-pointer text-white"
+                        className="bg-[#4CAF50] hover:bg-[#2E7D32] py-3 px-6 rounded-xl font-bold text-white transition-all"
                       >
                         Attach Payment Method to Bid
                       </Link>
@@ -398,7 +378,7 @@ const SingleAuctionDetail = ({ noPadding }) => {
                   ) : (
                     <Link
                       to="/login"
-                      className="bg-color-primary py-2 px-4 rounded-lg cursor-pointer text-white"
+                      className="bg-[#4CAF50] hover:bg-[#2E7D32] py-3 px-6 rounded-xl font-bold text-white transition-all"
                     >
                       Place Bid
                     </Link>

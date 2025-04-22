@@ -52,33 +52,33 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between items-center px-2  sm:px-14 bg-body-bg py-4 border-b border-border-info-color">
+    <div className="flex justify-between items-center px-2  sm:px-14 bg-[#1c882b] py-4 border-b border-border-info-color">
       <div className="flex items-center px-1 z-[1]">
         <Link to="/dashboard" className=" no-underline ">
-          <h1 className="text-3xl font-bold text-white font-Roboto">
-            <span className="uppercase text-theme-color">B</span>id
-            <span className="uppercase text-theme-color">M</span>y
-            <span className="uppercase text-theme-color">C</span>rops
+          <h1 className="text-3xl font-bold text-[#ffffff] font-Roboto">
+            <span className="uppercase text-[#3B82F6]">B</span>id
+            <span className="uppercase text-[#3B82F6]">M</span>y
+            <span className="uppercase text-[#3B82F6]">C</span>rops
           </h1>
         </Link>
       </div>
       <div className="hidden sm:block">
         <Link
           to="/"
-          className="text-white font-Roboto text-lg mx-3 hover:text-color-primary transition-all "
+          className="text-[#ffffff] font-Roboto text-lg mx-3 hover:text-[#3B82F6] transition-all "
         >
           Home
         </Link>
 
         <Link
           to="/contact-us"
-          className="text-white font-Roboto text-lg mx-3 hover:text-color-primary transition-all"
+          className="text-[#ffffff] font-Roboto text-lg mx-3 hover:text-[#3B82F6] transition-all"
         >
           Contact
         </Link>
         <Link
           to="/about-us"
-          className="text-white font-Roboto text-lg mx-3 hover:text-color-primary transition-all"
+          className="text-[#ffffff] font-Roboto text-lg mx-3 hover:text-[#3B82F6] transition-all"
         >
           About
         </Link>
@@ -88,9 +88,9 @@ const Header = () => {
           <div className="flex justify-center items-center">
             <Link
               to="/user-profile/cart"
-              className="text-white font-Roboto text-lg mx-3"
+              className="text-[#3B82F6] font-Roboto text-lg mx-3"
             >
-              <BsCart3 className="text-white  hover:text-theme-color  transition-all " />
+              <BsCart3 className="text-[#3B82F6]  hover:text-[#3B82F6]  transition-all " />
             </Link>
             <img
               src={user?.profilePicture}
@@ -101,19 +101,19 @@ const Header = () => {
             />
             <Link to="/user-profile/notifications" className="mr-2 relative">
               {unReadNotifications.length > 0 ? (
-                <span className="absolute right-0 top-0 w-[18px] h-[18px] flex items-center justify-center bg-theme-color rounded-full  text-white text-xs font-bold ">
+                <span className="absolute right-0 top-0 w-[18px] h-[18px] flex items-center justify-center bg-[#3B82F6] rounded-full  text-white text-xs font-bold ">
                   {unReadNotifications.length}
                 </span>
               ) : null}
 
               <IoIosNotificationsOutline
                 size={37}
-                className="text-white text-xl cursor-pointer bg-theme-bg hover:text-theme-color rounded-full p-2 transition-all "
+                className="text-[#3B82F6] text-xl cursor-pointer bg-[#4CAF50] hover:text-[#3B82F6] rounded-full p-2 transition-all "
               />
             </Link>
             <Link
               onClick={() => setNavbarOpen(!navbarOpen)}
-              className="text-white font-Roboto sm:hidden text-lg mx-3 order-3"
+              className="text-[#3B82F6] font-Roboto sm:hidden text-lg mx-3 order-3"
             >
               {navbarOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
             </Link>
@@ -122,13 +122,13 @@ const Header = () => {
           <>
             <Link
               to="/login"
-              className="bg-blue-500 no-underline font-Roboto text-base  hover:bg-color-danger transition-all duration-150 text-white py-1 sm:py-2 sm:px-3 px-2 rounded-md text-md font-semibold"
+              className="bg-[#3B82F6] no-underline font-Roboto text-base  hover:bg-[#3B82F6] transition-all duration-150 text-white py-1 sm:py-2 sm:px-3 px-2 rounded-md text-md font-semibold"
             >
               Sign In
             </Link>
             <Link
               onClick={() => setNavbarOpen(!navbarOpen)}
-              className="text-white font-Roboto sm:hidden text-lg mx-3 order-3 z-50"
+              className="text-[#3B82F6] font-Roboto sm:hidden text-lg mx-3 order-3 z-50"
             >
               {navbarOpen ? <FaTimes size={25} /> : <FaBars size={25} />}
             </Link>
@@ -140,12 +140,12 @@ const Header = () => {
         <div
           className={`${
             sidebarOpen ? "animate-fadein" : "hidden"
-          } rounded-xl origin-top-right overflow-hidden absolute right-12 top-16 mt-[4px] bg-body-bg z-50   w-[250px]`}
+          } rounded-xl origin-top-right overflow-hidden absolute right-12 top-16 mt-[4px] bg-[#4CAF50] z-50   w-[250px]`}
         >
           <nav className="pt-2 [&_a]:transition-all [&_a]:duration-100">
             <Link
               to="/user-profile/profile"
-              className="block no-underline text-white font-Roboto text-lg py-2 px-7 hover:bg-theme-bg-light"
+              className="block no-underline text-[#3B82F6] font-Roboto text-lg py-2 px-7 hover:bg-[#2E7D32]"
               onClick={() => setSidebarOpen(false)}
             >
               Profile
@@ -156,7 +156,7 @@ const Header = () => {
                   ? "/user-profile/manage-items"
                   : "/user-profile/bids-items"
               }
-              className="block no-underline text-white font-Roboto text-lg py-2 px-7 hover:bg-theme-bg-light"
+              className="block no-underline text-[#3B82F6] font-Roboto text-lg py-2 px-7 hover:bg-[#2E7D32]"
               onClick={() => setSidebarOpen(false)}
             >
               {user.userType === "seller" ? "Manage Items" : "Bids Items"}
@@ -164,7 +164,7 @@ const Header = () => {
 
             <Link
               to="/user-profile/account-settings"
-              className="block no-underline text-white font-Roboto text-lg py-2 px-7 hover:bg-theme-bg-light"
+              className="block no-underline text-[#3B82F6] font-Roboto text-lg py-2 px-7 hover:bg-[#2E7D32]"
               onClick={() => setSidebarOpen(false)}
             >
               Account Setting
@@ -174,7 +174,7 @@ const Header = () => {
                 logoutHandle();
                 setSidebarOpen(false);
               }}
-              className="block no-underline text-white font-Roboto text-lg py-2 px-7 hover:bg-theme-bg-light"
+              className="block no-underline text-[#3B82F6] font-Roboto text-lg py-2 px-7 hover:bg-[#2E7D32]"
             >
               Logout
             </Link>
@@ -182,7 +182,7 @@ const Header = () => {
         </div>
       ) : null}
       {navbarOpen && (
-        <ul className=" flex sm:hidden flex-col justify-center items-center absolute top-16 left-0 w-full h-screen bg-gradient-to-b from-theme-bg2 to-theme-bg text-body-text-color z-10 [&_li]:flex [&_li]:w-full link:w-full link:px-4 link:py-6 hover:link:bg-theme-bg2 text-center ">
+        <ul className=" flex sm:hidden flex-col justify-center items-center absolute top-16 left-0 w-full h-screen bg-gradient-to-b from-[#4CAF50] to-[#2E7D32] text-[#3B82F6] z-10 [&_li]:flex [&_li]:w-full link:w-full link:px-4 link:py-6 hover:link:bg-[#2E7D32] text-center ">
           <li className="cursor-pointer capitalize text-4xl">
             <Link to="/" onClick={() => setNavbarOpen(!navbarOpen)}>
               Home

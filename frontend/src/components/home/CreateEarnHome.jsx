@@ -8,9 +8,9 @@ const CreateEarnHome = () => {
     <div className="flex flex-col gap-4 mb-10 px-11 py-20 mt-20 justify-center bg-theme-bg rounded-[20px]  bg-cover">
     <div>
       <h2 className="mb-2 text-4xl font-medium">
-        Create, Sell & Earn at <span className="uppercase text-theme-color">B</span>id
-              <span className="uppercase text-theme-color">M</span>y
-              <span className="uppercase text-theme-color">C</span>rops
+        Create, Sell & Earn at <span className="uppercase text-white">B</span>id
+              <span className="uppercase text-white">M</span>y
+              <span className="uppercase text-white">C</span>rops
       </h2>
       <span>Start Selling your Amazing Products now!</span>
     </div>

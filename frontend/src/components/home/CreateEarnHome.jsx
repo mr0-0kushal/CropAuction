@@ -5,7 +5,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 const CreateEarnHome = () => {
     const logInUser = JSON.parse(localStorage.getItem("user"));
   return (
-    <div className="flex flex-col gap-4 mb-10 px-11 py-20 mt-20 justify-center bg-theme-bg rounded-[20px]  bg-cover bg-hero-img">
+    <div className="flex flex-col gap-4 mb-10 px-11 py-20 mt-20 justify-center bg-theme-bg rounded-[20px]  bg-cover">
     <div>
       <h2 className="mb-2 text-4xl font-medium">
         Create, Sell & Earn at <span className="uppercase text-theme-color">B</span>id

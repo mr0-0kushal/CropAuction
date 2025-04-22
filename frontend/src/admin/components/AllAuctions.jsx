@@ -197,13 +197,13 @@ const AllAuctions = () => {
 
   return (
     <>
-      <div className="px-7 py-4 w-full bg-theme-bg text-slate-300 rounded-2xl ">
-        <h2 className=" text-white font-bold text-xl border-b border-border-info-color pb-3 mb-5 ">
+      <div className="px-7 py-4 w-full bg-[#E8F5E9] text-[#1B3D1B] rounded-2xl">
+        <h2 className="text-[#1B3D1B] font-bold text-xl border-b border-[#8BC34A] pb-3 mb-5">
           All Auctions
         </h2>
         <div className="flex flex-col md:flex-row gap-4">
           <select
-            className="outline-none bg-theme-bg2 rounded-xl px-3 py-3 cursor-pointer border border-border-info-color focus:border-theme-color  transition-all"
+            className="outline-none bg-[#C8E6C9] rounded-xl px-3 py-3 cursor-pointer border border-[#8BC34A] focus:border-[#4CAF50] text-[#1B3D1B] transition-all"
             value={filterField}
             onChange={(e) => setFilterField(e.target.value)}
           >
@@ -219,29 +219,29 @@ const AllAuctions = () => {
             <option value="paymentStatus">Payment Status</option>
           </select>
           <input
-            className="outline-none w-full md:w-[200px] bg-theme-bg2 rounded-xl px-3 py-3 border border-border-info-color focus:border-theme-color transition-all"
+            className="outline-none w-full md:w-[200px] bg-[#C8E6C9] rounded-xl px-3 py-3 border border-[#8BC34A] focus:border-[#4CAF50] text-[#1B3D1B] transition-all"
             value={filterInput}
             onChange={handleFilterChange}
             placeholder={"Search Name"}
           />
         </div>
-        <div className="overflow-auto px-4 rounded-2xl border border-border-info-color mt-4 max-h-[500px]">
+        <div className="overflow-auto px-4 rounded-2xl border border-[#8BC34A] mt-4">
           <table
             {...getTableProps()}
-            className="text-left whitespace-nowrap w-full border-separate border-spacing-x-0 border-spacing-y-4 "
+            className="text-left whitespace-nowrap w-full border-separate border-spacing-x-0 border-spacing-y-4"
           >
-            <thead className="sticky top-0 bg-theme-bg table-header-group">
+            <thead className="sticky top-0 bg-[#E8F5E9]">
               {headerGroups.map((headerGroup, headerGroupIndex) => (
                 <tr
                   className="table-row"
                   {...headerGroup.getHeaderGroupProps()}
                   key={headerGroupIndex}
                 >
-                  {headerGroup.headers.map((column, columnIndex) => (
+                  {headerGroup.headers.map((column, i) => (
                     <th
                       {...column.getHeaderProps(column.getSortByToggleProps())}
-                      key={columnIndex}
-                      className="p-2 pr-5 select-none first:rounded-l-lg last:rounded-r-lg border-b border-border-info-color  hover:bg-theme-bg2  transition-all"
+                      key={i}
+                      className="p-2 pr-5 select-none first:rounded-l-lg last:rounded-r-lg border-b border-[#8BC34A] hover:bg-[#C8E6C9] transition-all"
                     >
                       <div className="flex gap-4">
                         {column.render("Header")}
@@ -261,22 +261,16 @@ const AllAuctions = () => {
               ))}
             </thead>
             <tbody className="table-row-group" {...getTableBodyProps()}>
-              {page.map((row) => {
+              {page.map((row, i) => {
                 prepareRow(row);
-                const rowProps = row.getRowProps();
                 return (
-                  <tr
-                    {...rowProps}
-                    {...row.getRowProps()}
-                    key={row.id}
-                    className=" border "
-                  >
-                    {row.cells.map((cell, cellIndex) => {
+                  <tr {...row.getRowProps()} key={i} className="border">
+                    {row.cells.map((cell, j) => {
                       return (
                         <td
+                          className="pl-2 pr-5 border-b border-[#8BC34A] pb-2"
                           {...cell.getCellProps()}
-                          key={cellIndex}
-                          className="pl-2 pr-5 border-b border-border-info-color pb-2"
+                          key={`${i}-${j}`}
                         >
                           {cell.render("Cell")}
                         </td>
@@ -288,56 +282,49 @@ const AllAuctions = () => {
             </tbody>
           </table>
         </div>
-        <div className="flex flex-col md:flex-row justify-center gap-4 my-4 items-center md:button:px-4 md:button:py-2 button:px-2 button:py-1 button:rounded-lg  ">
+        <div className="flex flex-col md:flex-row justify-center gap-4 my-4 items-center">
           <div className="flex justify-center items-center gap-4">
             <button
-              className={`bg-[#00A3FF] hover:bg-color-danger text-white transition-all ${
-                pageIndex === 0 ? "bg-gray-500 hover:bg-gray-500" : ""
+              className={`bg-[#8BC34A] hover:bg-[#4CAF50] text-[#1B3D1B] transition-all ${
+                pageIndex === 0 ? "bg-gray-300 hover:bg-gray-300" : ""
               }`}
               onClick={() => gotoPage(0)}
               disabled={pageIndex === 0 ? true : false}
             >
-              <MdSkipPrevious size={18} />{" "}
+              <MdSkipPrevious size={18} />
             </button>
             <button
               onClick={() => previousPage()}
               disabled={!canPreviousPage}
-              className={`bg-[#00A3FF] hover:bg-color-danger text-white transition-all ${
-                !canPreviousPage ? "bg-gray-500 hover:bg-gray-500" : ""
+              className={`bg-[#8BC34A] hover:bg-[#4CAF50] text-[#1B3D1B] transition-all ${
+                !canPreviousPage ? "bg-gray-300 hover:bg-gray-300" : ""
               }`}
             >
               <FaCaretLeft size={18} />
             </button>
-            <span className="text-slate-300">
-              Page{" "}
-              <strong>
-                {pageIndex + 1} of {pageCount}{" "}
-              </strong>
-              {"  "}
+            <span className="text-[#1B3D1B]">
+              Page <strong>{pageIndex + 1} of {pageCount}</strong>
             </span>
             <button
               onClick={() => nextPage()}
               disabled={!canNextPage}
-              className={`bg-[#00A3FF] hover:bg-color-danger text-white transition-all ${
-                !canNextPage ? "bg-gray-500 hover:bg-gray-500" : ""
+              className={`bg-[#8BC34A] hover:bg-[#4CAF50] text-[#1B3D1B] transition-all ${
+                !canNextPage ? "bg-gray-300 hover:bg-gray-300" : ""
               }`}
             >
               <FaCaretRight size={18} />
             </button>
             <button
-              className={`bg-[#00A3FF] hover:bg-color-danger text-white transition-all ${
-                pageIndex === pageCount - 1
-                  ? "bg-gray-500 hover:bg-gray-500"
-                  : ""
+              className={`bg-[#8BC34A] hover:bg-[#4CAF50] text-[#1B3D1B] transition-all ${
+                pageIndex === pageCount - 1 ? "bg-gray-300 hover:bg-gray-300" : ""
               }`}
               onClick={() => gotoPage(pageCount - 1)}
             >
-              <MdSkipNext size={18} />{" "}
+              <MdSkipNext size={18} />
             </button>
           </div>
-
           <select
-            className="outline-none hidden md:block bg-theme-bg2 rounded-xl px-4 py-3 cursor-pointer border border-border-info-color focus:border-theme-color  transition-all "
+            className="outline-none hidden md:block bg-[#C8E6C9] rounded-xl px-4 py-3 cursor-pointer border border-[#8BC34A] focus:border-[#4CAF50] text-[#1B3D1B] transition-all"
             value={pageSize}
             onChange={(e) => {
               setPageSize(Number(e.target.value));

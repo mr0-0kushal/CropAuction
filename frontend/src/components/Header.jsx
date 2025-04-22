@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { getNotificationForUser } from "../store/notification/notificationSlice";
 import socket from "../socket";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaUser, FaBox, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { BsCart3 } from "react-icons/bs";
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -140,14 +140,15 @@ const Header = () => {
         <div
           className={`${
             sidebarOpen ? "animate-fadein" : "hidden"
-          } rounded-xl origin-top-right overflow-hidden absolute right-12 top-16 mt-[4px] bg-[#4CAF50] z-50   w-[250px]`}
+          } rounded-xl origin-top-right overflow-hidden absolute right-12 top-16 mt-[4px] bg-[#1B3D1B] border-2 border-[#4CAF50] z-50 w-[250px] shadow-lg`}
         >
-          <nav className="pt-2 [&_a]:transition-all [&_a]:duration-100">
+          <nav className="py-2 [&_a]:transition-all [&_a]:duration-100">
             <Link
               to="/user-profile/profile"
-              className="block no-underline text-[#3B82F6] font-Roboto text-lg py-2 px-7 hover:bg-[#2E7D32]"
+              className="flex items-center gap-3 no-underline text-white font-Roboto text-lg py-3 px-7 hover:bg-[#2E7D32] hover:text-[#4CAF50]"
               onClick={() => setSidebarOpen(false)}
             >
+              <FaUser className="text-[#4CAF50]" />
               Profile
             </Link>
             <Link
@@ -156,17 +157,18 @@ const Header = () => {
                   ? "/user-profile/manage-items"
                   : "/user-profile/bids-items"
               }
-              className="block no-underline text-[#3B82F6] font-Roboto text-lg py-2 px-7 hover:bg-[#2E7D32]"
+              className="flex items-center gap-3 no-underline text-white font-Roboto text-lg py-3 px-7 hover:bg-[#2E7D32] hover:text-[#4CAF50]"
               onClick={() => setSidebarOpen(false)}
             >
+              <FaBox className="text-[#4CAF50]" />
               {user.userType === "seller" ? "Manage Items" : "Bids Items"}
             </Link>
-
             <Link
               to="/user-profile/account-settings"
-              className="block no-underline text-[#3B82F6] font-Roboto text-lg py-2 px-7 hover:bg-[#2E7D32]"
+              className="flex items-center gap-3 no-underline text-white font-Roboto text-lg py-3 px-7 hover:bg-[#2E7D32] hover:text-[#4CAF50]"
               onClick={() => setSidebarOpen(false)}
             >
+              <FaCog className="text-[#4CAF50]" />
               Account Setting
             </Link>
             <Link
@@ -174,8 +176,9 @@ const Header = () => {
                 logoutHandle();
                 setSidebarOpen(false);
               }}
-              className="block no-underline text-[#3B82F6] font-Roboto text-lg py-2 px-7 hover:bg-[#2E7D32]"
+              className="flex items-center gap-3 no-underline text-white font-Roboto text-lg py-3 px-7 hover:bg-[#2E7D32] hover:text-[#4CAF50]"
             >
+              <FaSignOutAlt className="text-[#4CAF50]" />
               Logout
             </Link>
           </nav>

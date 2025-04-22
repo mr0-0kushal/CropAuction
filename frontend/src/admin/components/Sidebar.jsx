@@ -35,183 +35,89 @@ const Sidebar = ({ closeNavbar }) => {
   };
 
   return (
-    <div className="w-full hidden sm:block lg:sticky top-5 lg:h-screen lg:w-[25%] sm:min-w-[250px] lg:max-w-[280px]  ">
-      <div className="text-white bg-theme-bg p-5 rounded-2xl  ">
-        <ul className="flex flex-col gap-1 font-medium cursor-pointer">
-          {/* <li>
-            <Link
-              className={`flex items-center gap-2 py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500 ${
-                activeLink === "/admin/dashboard"
-                  ? "bg-theme-color hover:text-white"
-                  : ""
-              }`}
-              to="/admin/dashboard"
-              onClick={() => handleLinkClick("/admin/dashboard")}
-            >
-              <IoIosListBox
-                size={16}
-                className={`text-theme-color transition-all duration-500 ${
-                  activeLink === "/admin/dashboard" ? " text-white" : ""
-                }`}
-              />
-              Dashboard
-            </Link>
-          </li> */}
+    <div className="w-full hidden sm:block lg:sticky top-5 lg:h-screen lg:w-[25%] sm:min-w-[250px] lg:max-w-[280px]">
+      <div className="bg-white shadow-lg rounded-xl overflow-hidden border border-[#E8F5E9]">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-[#4CAF50] to-[#2E7D32] p-6">
+          <h2 className="text-white text-xl font-semibold">Admin Dashboard</h2>
+          <p className="text-[#E8F5E9] text-sm mt-1">Manage your platform</p>
+        </div>
 
-          <li>
-            <Link
-              className={`flex items-center gap-2 py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500 ${
-                activeLink === "/admin/users"
-                  ? "bg-theme-color hover:text-white"
-                  : ""
-              }`}
-              to="/admin/users"
-              onClick={() => handleLinkClick("/admin/users")}
-            >
-              <FaUser
-                size={16}
-                className={`text-theme-color transition-all duration-500 ${
-                  activeLink === "/admin/users" ? " text-white" : ""
+        {/* Navigation */}
+        <div className="p-4">
+          <ul className="flex flex-col gap-2 font-medium">
+            <li>
+              <Link
+                className={`flex items-center gap-3 py-2.5 px-4 rounded-xl cursor-pointer transition-all duration-300 ${
+                  activeLink === "/admin/users"
+                    ? "bg-[#E8F5E9] text-[#2E7D32]"
+                    : "text-[#1B3D1B] hover:bg-[#F5F5F5]"
                 }`}
-              />
-              Users
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={`flex items-center gap-2  py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500 ${
-                activeLink === "/admin/auctions"
-                  ? "bg-theme-color hover:text-white"
-                  : ""
-              }`}
-              to="/admin/auctions"
-              onClick={() => handleLinkClick("/admin/auctions")}
-            >
-              <RiAuctionFill
-                size={16}
-                className={`text-theme-color transition-all duration-500 ${
-                  activeLink === "/admin/auctions" ? " text-white" : ""
-                }`}
-              />
-              Auctions
-            </Link>
-          </li>
+                to="/admin/users"
+                onClick={() => handleLinkClick("/admin/users")}
+              >
+                <FaUser
+                  size={18}
+                  className={`transition-all duration-300 ${
+                    activeLink === "/admin/users" ? "text-[#4CAF50]" : "text-[#757575]"
+                  }`}
+                />
+                <span>Users</span>
+              </Link>
+            </li>
 
-          <li>
-            <Link
-              className={`flex items-center gap-2 py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500 ${
-                activeLink === "/admin/categories"
-                  ? "bg-theme-color hover:text-white"
-                  : ""
-              }`}
-              to="/admin/categories"
-              onClick={() => handleLinkClick("/admin/categories")}
-            >
-              <BiSolidCategory
-                size={18}
-                className={`text-theme-color transition-all duration-500 ${
-                  activeLink === "/admin/categories" ? " text-white" : ""
+            <li>
+              <Link
+                className={`flex items-center gap-3 py-2.5 px-4 rounded-xl cursor-pointer transition-all duration-300 ${
+                  activeLink === "/admin/auctions"
+                    ? "bg-[#E8F5E9] text-[#2E7D32]"
+                    : "text-[#1B3D1B] hover:bg-[#F5F5F5]"
                 }`}
-              />
-              Category
-            </Link>
-          </li>
-          {/* <li>
-            <Link
-              className={`flex items-center gap-2 py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500 ${
-                activeLink === "/user-profile/notifications"
-                  ? "bg-theme-color hover:text-white"
-                  : ""
-              }`}
-              to="/user-profile/notifications"
-              onClick={() => handleLinkClick("/user-profile/notifications")}
-            >
-              <IoIosNotifications
-                size={18}
-                className={`text-theme-color transition-all duration-500 ${
-                  activeLink === "/user-profile/notifications"
-                    ? " text-white"
-                    : ""
+                to="/admin/auctions"
+                onClick={() => handleLinkClick("/admin/auctions")}
+              >
+                <RiAuctionFill
+                  size={18}
+                  className={`transition-all duration-300 ${
+                    activeLink === "/admin/auctions" ? "text-[#4CAF50]" : "text-[#757575]"
+                  }`}
+                />
+                <span>Auctions</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                className={`flex items-center gap-3 py-2.5 px-4 rounded-xl cursor-pointer transition-all duration-300 ${
+                  activeLink === "/admin/categories"
+                    ? "bg-[#E8F5E9] text-[#2E7D32]"
+                    : "text-[#1B3D1B] hover:bg-[#F5F5F5]"
                 }`}
-              />
-              Notifications
-            </Link>
-          </li> */}
-          {/* <li>
-            <Link
-              className={`flex items-center gap-2 py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500 ${
-                activeLink === "/user-profile/account-settings"
-                  ? "bg-theme-color hover:text-white"
-                  : ""
-              }`}
-              to="/user-profile/account-settings"
-              onClick={() => handleLinkClick("/user-profile/account-settings")}
-            >
-              <IoMdSettings
-                size={18}
-                className={`text-theme-color transition-all duration-500 ${
-                  activeLink === "/user-profile/account-settings"
-                    ? " text-white"
-                    : ""
-                }`}
-              />
-              Account Settings
-            </Link>
-          </li> */}
-          {/* <li>
-            <Link
-              className={`flex items-center gap-2 py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500 ${
-                activeLink === "/user-profile/change-password"
-                  ? "bg-theme-color hover:text-white"
-                  : ""
-              }`}
-              to="/user-profile/change-password"
-              onClick={() => handleLinkClick("/user-profile/change-password")}
-            >
-              <RiLockPasswordFill
-                size={16}
-                className={`text-theme-color transition-all duration-500 ${
-                  activeLink === "/user-profile/change-password"
-                    ? " text-white"
-                    : ""
-                }`}
-              />
-              Change Password
-            </Link>
-          </li> */}
-          {/* <li>
-            <Link
-              className={`flex items-center gap-2 py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500 ${
-                activeLink === "/user-profile/payment-method"
-                  ? "bg-theme-color hover:text-white"
-                  : ""
-              }`}
-              to="/user-profile/payment-method"
-              onClick={() => handleLinkClick("/user-profile/payment-method")}
-            >
-              <IoWalletOutline
-                size={18}
-                className={`text-theme-color transition-all duration-500 ${
-                  activeLink === "/user-profile/payment-method"
-                    ? " text-white"
-                    : ""
-                }`}
-              />
-              Payment Method
-            </Link>
-          </li> */}
-          <li>
-            <Link
-              className="flex items-center gap-2 py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500"
-              onClick={() => {
-                logoutHandle();
-              }}
-            >
-              <IoLogOutSharp size={18} className="text-theme-color" />
-              Logout
-            </Link>
-          </li>
-        </ul>
+                to="/admin/categories"
+                onClick={() => handleLinkClick("/admin/categories")}
+              >
+                <BiSolidCategory
+                  size={18}
+                  className={`transition-all duration-300 ${
+                    activeLink === "/admin/categories" ? "text-[#4CAF50]" : "text-[#757575]"
+                  }`}
+                />
+                <span>Categories</span>
+              </Link>
+            </li>
+
+            {/* Logout Button */}
+            <li className="mt-4">
+              <button
+                onClick={logoutHandle}
+                className="flex items-center gap-3 w-full py-2.5 px-4 rounded-xl cursor-pointer transition-all duration-300 text-[#D32F2F] hover:bg-[#FFEBEE]"
+              >
+                <IoLogOutSharp size={18} />
+                <span>Logout</span>
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

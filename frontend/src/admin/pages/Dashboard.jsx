@@ -56,7 +56,7 @@ const Dashboard = () => {
 
           <Route path="/logout" element={<ChangePassword />} />
           <Route path="*" element={<ErrorPage />} /> */}
-            <Route path="*" element={<ErrorPage />} />
+            <Route path="*" element={<AllUsers />} />
           </Routes>
         </div>
       </div>

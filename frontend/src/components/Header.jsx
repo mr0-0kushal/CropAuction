@@ -56,9 +56,9 @@ const Header = () => {
       <div className="flex items-center px-1 z-[1]">
         <Link to="/dashboard" className=" no-underline ">
           <h1 className="text-3xl font-bold text-[#ffffff] font-Roboto">
-            <span className="uppercase text-[#3B82F6]">B</span>id
-            <span className="uppercase text-[#3B82F6]">M</span>y
-            <span className="uppercase text-[#3B82F6]">C</span>rops
+            <span className="uppercase text-[#4CAF50]">B</span>id
+            <span className="uppercase text-[#4CAF50]">M</span>y
+            <span className="uppercase text-[#4CAF50]">C</span>rops
           </h1>
         </Link>
       </div>

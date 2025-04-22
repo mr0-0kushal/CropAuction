@@ -19,7 +19,8 @@ const Footer = () => {
           >
             <h1 className="text-3xl font-bold text-[#E8F5E9] font-Roboto">
               <span className="uppercase text-[#4CAF50]">B</span>id
-              <span className="uppercase text-[#4CAF50]">F</span>air
+              <span className="uppercase text-[#4CAF50]">M</span>y
+              <span className="uppercase text-[#4CAF50]">C</span>rops
             </h1>
           </Link>
           <ul className="flex flex-wrap items-center text-sm font-medium text-[#E8F5E9] list-none">
@@ -47,6 +48,7 @@ const Footer = () => {
                 Licensing
               </Link>
             </li> */}
+            
             <li>
               <Link
                 to="/contact-us"
@@ -60,10 +62,11 @@ const Footer = () => {
         <hr className="my-6 border-[#4CAF5040] sm:mx-auto lg:my-8" />
         <div className="font-Roboto flex justify-center text-[#E8F5E9] items-center text-sm sm:text-center">
           © {new Date().getFullYear()}
-          <Link to="/admin/dashboard" className="ml-1 no-underline">
+          <Link to="/" className="ml-1 no-underline">
             <p className="text-sm font-bold text-[#4CAF50] font-Roboto">
               <span className="uppercase text-[#4CAF50]">B</span>id
-              <span className="uppercase text-[#4CAF50]">F</span>air
+              <span className="uppercase text-[#4CAF50]">M</span>y
+              <span className="uppercase text-[#4CAF50]">C</span>rops
             </p>
           </Link>
           . All Rights Reserved.

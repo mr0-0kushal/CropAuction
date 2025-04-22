@@ -4,6 +4,7 @@ import aboutimg from "../assets/aboutus.png";
 import dev1 from "../assets/dev1.jpg";
 import dev2 from "../assets/dev2.jpg";
 import dev3 from "../assets/dev3.jpg";
+import dev4 from "../assets/dev4.jpg";
 import CreateEarnHome from "../components/home/CreateEarnHome";
 
 const AboutUs = () => {

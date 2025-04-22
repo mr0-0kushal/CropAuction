@@ -15,8 +15,9 @@ const CreateEarnHome = () => {
     </div>
     <Link
       className="hover:scale-105 bg-theme-color px-5 py-3 rounded-xl text-white cursor-pointer font-bold tracking-wide hover:bg-hover transition-all duration-200  w-fit"
-      to={logInUser ? "/create-auction" : "/login"}
+      to={logInUser ? "/" : "/"}
     >
+      {/* create-auction , login */}
       <div className="flex items-center gap-2">
         <span>Get Started </span>
         <FaArrowRightLong />

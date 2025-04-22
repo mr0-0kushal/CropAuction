@@ -27,7 +27,7 @@ const LiveHome = (props) => {
             <span className="absolute animate-ping flex rounded-full h-3 w-3 bg-sky-500"></span>
             <span className="relative flex rounded-full h-3 w-3 bg-sky-500"></span>
           </div>
-          <h2 className="text-2xl font-bold text-white">{ props.onlyAuction==="onlyAuction" ?"": "Live Auctions"}</h2>
+          <h2 className="text-2xl font-bold text-[#0A3ff]">{ props.onlyAuction==="onlyAuction" ?"": "Live Auctions"}</h2>
 
         </div>
         <swiper-container

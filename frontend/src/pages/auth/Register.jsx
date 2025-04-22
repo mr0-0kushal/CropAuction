@@ -12,7 +12,7 @@ const Register = () => {
     fullName: "",
     email: "",
     password: "",
-    userType: "buyer", // Default to buyer
+    userType: "user", // Default to buyer
   });
 
   const navigate = useNavigate();
@@ -131,14 +131,14 @@ const Register = () => {
               <input
                 type="radio"
                 name="userType"
-                value="buyer"
-                checked={formData.userType === "buyer"}
+                value="user"
+                checked={formData.userType === "user"}
                 onChange={(e) => setFormData({ ...formData, userType: e.target.value })}
                 className="w-4 h-4 text-[#4CAF50] focus:ring-[#4CAF50]"
               />
               <span>Buyer</span>
             </label>
-            <label className="flex items-center gap-2 cursor-pointer">
+            <label className="flex ;litems-center gap-2 cursor-pointer">
               <input
                 type="radio"
                 name="userType"

@@ -1,7 +1,7 @@
 const ProcessHome = () => {
   return (
     <div className="">
-      <h2 className="text-4xl font-medium text-white mb-10 text-center">
+      <h2 className="text-4xl font-medium text-[#0A3ff] mb-10 text-center">
         Create And Sell{" "}
         <span className="text-color-primary">🌾 Sell Your Crops in Four Simple Steps
         </span>

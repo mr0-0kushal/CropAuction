@@ -110,7 +110,7 @@ const Sidebar = () => {
               Bids Items
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               className={`flex items-center gap-2 py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500 ${
                 activeLink === "/user-profile/notifications"
@@ -130,7 +130,7 @@ const Sidebar = () => {
               />
               Notifications
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               className={`flex items-center gap-2 py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500 ${
@@ -173,7 +173,7 @@ const Sidebar = () => {
               Change Password
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               className={`flex items-center gap-2 py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500 ${
                 activeLink === "/user-profile/payment-method"
@@ -193,7 +193,7 @@ const Sidebar = () => {
               />
               Payment Method
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               className="flex items-center gap-2 py-2 px-4 rounded-lg cursor-pointer hover:pl-[20px] hover:text-theme-color hover:bg-theme transition-all duration-500"

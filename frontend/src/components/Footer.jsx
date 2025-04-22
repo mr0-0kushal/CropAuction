@@ -19,7 +19,8 @@ const Footer = () => {
           >
             <h1 className="text-3xl font-bold text-white font-Roboto">
               <span className="uppercase text-theme-color">B</span>id
-              <span className="uppercase text-theme-color">F</span>air
+              <span className="uppercase text-theme-color">M</span>y
+              <span className="uppercase text-theme-color">C</span>rops
             </h1>
           </Link>
           <ul className="flex flex-wrap items-center text-sm font-medium text-white list-none">
@@ -64,7 +65,8 @@ const Footer = () => {
           <Link to="/" className=" ml-1 no-underline">
             <p className="text-sm font-bold text-theme-color font-Roboto">
               <span className="uppercase text-theme-color"> B</span>id
-              <span className="uppercase text-theme-color">F</span>air
+              <span className="uppercase text-theme-color">M</span>y
+              <span className="uppercase text-theme-color">C</span>rops
             </p>
           </Link>
           . All Rights Reserved.

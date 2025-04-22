@@ -89,9 +89,9 @@ const AdminRoutes=()=>{
     const auth = useAuth();
     const navigate = useNavigate();
   //console.log(auth, "auth.,,,,,seller routes,,,...........");
-  if (auth && user.userType !== "admin") {
-    navigate("/dashboard");
-  }
+  // if (auth && user.userType !== "admin") {
+  //   navigate("/dashboard");
+  // }
     useEffect(() => {
       if (auth && user.userType !== "admin") {
         navigate("/dashboard");

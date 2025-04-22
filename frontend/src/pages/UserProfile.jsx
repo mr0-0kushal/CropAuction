@@ -40,7 +40,7 @@ const UserProfile = () => {
 
           </Route>
           <Route path="/bids-items" element={<BidsItem />} />
-          <Route path="/notifications" element={<Notifications />} />
+          {/* <Route path="/notifications" element={<Notifications />} /> */}
           <Route path="/account-settings" element={<AccountSetting />} />
           <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/payment-method" element={<PaymentMethod />} />

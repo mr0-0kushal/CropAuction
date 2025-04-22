@@ -74,6 +74,7 @@ console.log(user,"...")
            
           </Route>
           {/* <Route element={<AdminRoutes />}> */}
+              <Route path="/login/admin" element={<AdminLogin />} />
               <Route path="/admin/*" element={<AdminDashboard />} />
               
             {/* </Route> */}

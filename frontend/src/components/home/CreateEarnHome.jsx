@@ -9,7 +9,8 @@ const CreateEarnHome = () => {
     <div>
       <h2 className="mb-2 text-4xl font-medium">
         Create, Sell & Earn at <span className="uppercase text-theme-color">B</span>id
-              <span className="uppercase text-theme-color">F</span>air
+              <span className="uppercase text-theme-color">M</span>y
+              <span className="uppercase text-theme-color">C</span>rops
       </h2>
       <span>Start Selling your Amazing Products now!</span>
     </div>

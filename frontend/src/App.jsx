@@ -25,6 +25,7 @@ import AdminHeader from "./admin/components/Header"
 import AdminLogin from "./admin/pages/Login"
 import AdminDashboard from "./admin/Admin"
 import ManageItems from "./components/ManageItems";
+import KisaanAI from "./pages/KisaanAI";
 
 
 const App = () => {
@@ -62,6 +63,7 @@ console.log(user,"...")
           </Route>
 
           <Route element={<Protected />}>
+          <Route path="/kisaanAI" element={<KisaanAI />} />
             <Route path="/user-profile/*" element={<UserProfile />} />
             <Route path="/edit-auction/:id" element={<EditAuction />} />
             <Route path="/success/:id" element={<PaymentSuccess />} />

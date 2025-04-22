@@ -6,22 +6,22 @@ const HeroHome = () => {
   const logInUser = JSON.parse(localStorage.getItem("user"));
   return (
     <>
-      <div className="lg:h-[85vh] py-20 p-5 lg:px-12 flex items-center justify-center flex-wrap lg:flex-nowrap gap-5 text-[#1B3D1B] bg-white">
-        <div className="block overflow-hidden">
+      <div className="lg:h-[85vh] py-20 p-5 lg:px-12 flex items-center justify-center flex-wrap lg:flex-nowrap gap-5 text-[#1B3D1B] bg-white relative overflow-hidden">
+        {/* Background gradient circles */}
+        <div className="absolute inset-0 overflow-hidden">
           <div className="w-[300px] h-[300px] bg-[#E8F5E9] rounded-full blur-[150px] absolute left-[-50px] top-[-80px]"></div>
           <div className="w-[200px] h-[200px] bg-[#8BC34A] rounded-full blur-[150px] absolute left-[45%] top-[100px]"></div>
-          <div className="w-[250px] h-[250px] bg-[#4CAF50] rounded-full blur-[150px] absolute  right-[50px] bottom-[80%] lg:bottom-[70%]"></div>
+          <div className="w-[250px] h-[250px] bg-[#4CAF50] rounded-full blur-[150px] absolute right-[50px] bottom-[80%] lg:bottom-[70%]"></div>
         </div>
 
-        <div className="w-full flex flex-col gap-4 z-[1]">
-          <h3 className="tracking-wider text-[#4CAF50] font-bold">DISCOVER, COLLECT AND SELL</h3>
+        {/* Content */}
+        <div className="w-full flex flex-col gap-4 z-[1] max-w-[600px]">
+          <h3 className="tracking-wider text-[#4CAF50] font-bold">🌱 DISCOVER, BID, AND SELL</h3>
           <h1 className="text-5xl font-bold text-[#1B3D1B]">
-            Discover Fresh Crops And Bid in Real-Time
+            Fresh Crops. Real-Time Auctions. Fair Prices.
           </h1>
           <p className="text-[#1B3D1B]">
-            Our real-time auctions let you join the thrill of selling, hunting
-            and bidding live on fresh agricultural produce. Explore our listings to start
-            bidding or sell your own crops!
+            At BidMyCrop, experience the power of live, transparent crop trading. Whether you're a buyer looking for quality produce or a farmer ready to sell, our real-time auction system brings the market to your fingertips.
           </p>
           <div className="flex gap-4">
             <Link
@@ -44,8 +44,19 @@ const HeroHome = () => {
             </Link>
           </div>
         </div>
-        <div className="w-full lg:p-20 animate-float ">
-          <img src={herovector} alt="Hero-img" />
+
+        {/* Hero Image */}
+        <div className="w-full lg:p-20 animate-float relative z-[1] flex justify-center items-center">
+          <img 
+            src={herovector} 
+            alt="Hero-img" 
+            className="w-full h-auto max-w-[600px] mx-auto object-contain"
+            style={{
+              maxHeight: '500px',
+              objectFit: 'contain',
+              objectPosition: 'center'
+            }}
+          />
         </div>
       </div>
     </>

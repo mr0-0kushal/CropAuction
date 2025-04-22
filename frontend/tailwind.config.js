@@ -39,7 +39,15 @@ export default {
       backgroundImage: {
         "hero-img": "url(./assets/bg.jpg)",
       },
-
+      backgroundPosition: {
+        'center-center': 'center center',
+      },
+      backgroundSize: {
+        'cover-full': 'cover',
+      },
+      backgroundRepeat: {
+        'no-repeat': 'no-repeat',
+      },
       keyframes: {
         fadeinkey: {
           "0%": {

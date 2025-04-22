@@ -38,17 +38,17 @@ toast.success("Email Send Successfully.",{
 
   return (
     <>
-      <div className="text-white flex items-center justify-center flex-col h-[280px] bg-hero-img bg-cover">
-        <h1 className="text-center font-bold text-3xl">Contact Us</h1>
-        <div className="flex gap-2 font-medium pt-2">
+      <div className="text-white flex items-center justify-center flex-col h-[280px] bg-hero-img bg-center-center bg-cover-full bg-no-repeat relative before:content-[''] before:absolute before:inset-0 before:bg-[#1B3D1B] before:bg-opacity-50">
+        <h1 className="text-center font-bold text-3xl relative z-10">Contact Us</h1>
+        <div className="flex gap-2 font-medium pt-2 relative z-10">
           <Link
             to={"/"}
-            className=" no-underline hover:text-theme-color transition-all"
+            className="no-underline hover:text-[#4CAF50] transition-all"
           >
             Home
           </Link>
           <span>/</span>
-          <span className="text-theme-color">Contact Us</span>
+          <span className="text-[#4CAF50]">Contact Us</span>
         </div>
       </div>
       <div className="max-w-[1000px] m-auto px-5 py-20 flex flex-col gap-20">

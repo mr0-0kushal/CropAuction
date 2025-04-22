@@ -17,17 +17,17 @@ import ErrorPage from "./ErrorPage";
 const UserProfile = () => {
   return (
     <div className="">
-      <div className="text-white flex items-center justify-center flex-col h-[280px] bg-hero-img bg-cover">
-        <h1 className="text-center font-bold text-3xl">Profile</h1>
-        <div className="flex gap-2 font-medium pt-2">
+      <div className="text-white flex items-center justify-center flex-col h-[280px] bg-hero-img bg-center-center bg-cover-full bg-no-repeat relative before:content-[''] before:absolute before:inset-0 before:bg-[#1B3D1B] before:bg-opacity-50">
+        <h1 className="text-center font-bold text-3xl relative z-10">Profile</h1>
+        <div className="flex gap-2 font-medium pt-2 relative z-10">
           <Link
             to="/"
-            className=" no-underline hover:text-theme-color transition-all"
+            className="no-underline hover:text-[#4CAF50] transition-all"
           >
             Home
           </Link>
           <span>/</span>
-          <span className="text-theme-color">Profile</span>
+          <span className="text-[#4CAF50]">Profile</span>
         </div>
       </div>
       <div className="flex gap-4 px-5 py-10 flex-wrap lg:flex-nowrap ">

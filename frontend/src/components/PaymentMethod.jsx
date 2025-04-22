@@ -12,7 +12,7 @@ import { getCurrentUser } from "../store/auth/authSlice";
 import { toast } from "react-toastify";
 
 const stripe = await loadStripe(
-  "pk_test_51P5t81Lvvxf0OOpItZ5a94EMI92eFidBTy8oWVF7XTsHTwu17Q9BB292AQjV6s3fjSoWdp60vlG1jG090s6QgDm100UKAL5SIR"
+  "pk_test_51QCNfO05mxxRnIKxAjCj8WkVp4FlMPRWaPuXmwuqEt0fvK2YtuwabydNlPKZLfpQyhajRS6wBSIZeVOeHSKP392000wa8lgdFZ"
 );
 
 const CheckoutForm = () => {
